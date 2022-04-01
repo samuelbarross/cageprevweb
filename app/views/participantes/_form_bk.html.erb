@@ -1,0 +1,220 @@
+<%- model_class = Participante -%>
+<%- model_class_imagem = Imagem -%>
+
+<%= simple_nested_form_for(@participante, html: { class: "form-horizontal", role: "form", name: "form"  }) do |f| %>
+    <%= f.error_notification %>
+    <div class="row">
+        <div class="ibox-content">
+            <%= f.input :matricula, as: :string,  wrapper: :horizontal_form %>
+            <div class="hr-line-dashed"></div>
+            <%= f.input :nome, as: :string,  wrapper: :horizontal_form %>
+            <div class="hr-line-dashed"></div>
+            <%= f.input :nome_pai, as: :string,  wrapper: :horizontal_form %>
+            <div class="hr-line-dashed"></div>
+            <%= f.input :nome_mae, as: :string,  wrapper: :horizontal_form %>
+            <div class="hr-line-dashed"></div>
+            <%= f.input :nome_conjugue, as: :string,  wrapper: :horizontal_form %>
+            <div class="hr-line-dashed"></div>
+            <%= f.input :sexo, collection: Participante.sexos.keys, wrapper: :horizontal_form %>
+            <div class="hr-line-dashed"></div>
+            <%= f.input :naturalidade, as: :string,  wrapper: :horizontal_form %>
+            <div class="hr-line-dashed"></div>
+            <%= f.input :nacionalidade, as: :string,  wrapper: :horizontal_form %>
+            <div class="hr-line-dashed"></div>
+            <%= f.input :estado_civil, collection: Participante.estado_civis.keys, wrapper: :horizontal_form %>
+            <div class="hr-line-dashed"></div>
+            <%= f.input :data_nascimento, as: :string, wrapper: :horizontal_form, input_html: { class: "datepicker", value: f.object.data_nascimento.try(:strftime, '%d/%m/%Y') } %>
+            <div class="hr-line-dashed"></div>
+            <%= f.input :cpf, as: :string, wrapper: :horizontal_form %>
+            <div class="hr-line-dashed"></div>
+            <%= f.input :rg, as: :string, wrapper: :horizontal_form %>
+            <div class="hr-line-dashed"></div>
+            <%= f.input :orgao_expedidor, as: :string, wrapper: :horizontal_form %>
+            <div class="hr-line-dashed"></div>
+            <%= f.input :data_expedicao, as: :string, wrapper: :horizontal_form, input_html: { class: "datepicker", value: f.object.data_expedicao.try(:strftime, '%d/%m/%Y') } %>
+            <div class="hr-line-dashed"></div>
+            <%= f.input :logradouro, as: :string,  wrapper: :horizontal_form %>
+            <div class="hr-line-dashed"></div>
+            <%= f.input :numero, as: :string,  wrapper: :horizontal_form %>
+            <div class="hr-line-dashed"></div>
+            <%= f.input :complemento, as: :string,  wrapper: :horizontal_form %>
+            <div class="hr-line-dashed"></div>
+            <%= f.input :bairro, as: :string,  wrapper: :horizontal_form %>
+            <div class="hr-line-dashed"></div>
+            <%= f.input :cidade, as: :string,  wrapper: :horizontal_form %>
+            <div class="hr-line-dashed"></div>
+            <%= f.input :cep, as: :string,  wrapper: :horizontal_form %>
+            <div class="hr-line-dashed"></div>
+            <%= f.input :estado_id, as: :string, wrapper: :horizontal_form, input_html: { class: "buscar-estado", data: {initvalue: {"id": f.object.estado_id, "text": (f.object.estado.descricao if f.object.estado)}}} %>
+            <div class="hr-line-dashed"></div>
+            <%= f.input :data_posse, as: :string, wrapper: :horizontal_form, input_html: { class: "datepicker", value: f.object.data_posse.try(:strftime, '%d/%m/%Y') } %>
+            <div class="hr-line-dashed"></div>
+            <%= f.input :cargo, as: :string,  wrapper: :horizontal_form %>
+            <div class="hr-line-dashed"></div>
+            <%= f.input :lotacao_id, as: :string, wrapper: :horizontal_form, input_html: { class: "buscar-lotacao", data: {initvalue: {"id": f.object.lotacao_id, "text": (f.object.lotacao.descricao if f.object.lotacao)}}} %>
+            <div class="hr-line-dashed"></div>
+            <%= f.input :telefone_residencial, as: :string,  wrapper: :horizontal_form %>
+            <div class="hr-line-dashed"></div>
+            <%= f.input :telefone_celular, as: :string,  wrapper: :horizontal_form %>
+            <div class="hr-line-dashed"></div>
+            <%= f.input :email, as: :string,  wrapper: :horizontal_form %>
+            <div class="hr-line-dashed"></div>
+
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="panel blank-panel">
+                        <div class="panel-heading">
+                            <div class="panel-options">
+                                <ul class="nav nav-tabs">
+                                    <li class="active"><a data-toggle="tab" href="#tab-1">Imagens</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="panel-body">
+                            <div class="tab-content">
+                                <!-- Imagens -->
+                                <div id="tab-1" class="tab-pane active">
+                                    <table class="table table-bordered" id="participante_imagem">
+                                        <thead>
+                                            <tr>
+                                                <th width="02%"><%= f.link_to_add "Adicionar", :imagens, class: "btn btn-primary insert_in_table", data: { target: "#participante_imagem" } %></th>
+                                                <th><%= model_class_imagem.human_attribute_name(:image) %></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <%= f.simple_fields_for :imagens, wrapper: false do |ff| %>
+                                                <tr class="fields">
+                                                    <td><%= ff.link_to_remove "Excluir", :class => 'btn btn-white' %></td>
+                                                    <td>
+                                                        <% if ff.object.images_file_name and ff.object.valid? %>
+                                                            <% if ff.object.images_content_type == "application/pdf" %>
+                                                                <!-- <div class="m-t-lg"> -->
+                                                                    <!-- <div class="attachment"> -->
+                                                                        <div class="file-box">
+                                                                            <div class="file">
+                                                                                <a href="#">
+                                                                                    <span class="corner"></span>
+
+                                                                                    <div class="icon">
+                                                                                        <i class="fa fa-file"></i>
+                                                                                    </div>
+                                                                                    <div class="file-name">
+                                                                                        <%= link_to ff.object.images_file_name, ff.object.images.url, class: "fa fa-download", target: '_blank'  %>
+                                                                                    </div>
+                                                                                </a>
+                                                                            </div>
+                                                                        </div>
+                                                                        <!-- <div class="clearfix"></div> -->
+                                                                    <!-- </div> -->
+                                                                <!-- </div> -->
+                                                            <% else %>
+                                                            <a href="<%= image_path(ff.object.images.url) %>" title="Imagem"><%= image_tag(ff.object.images.url(:thumb), size: "160x160") %></a>
+                                                                <%#= image_tag(ff.object.imagem_nf.url(:thumb), size: "160x160") %>
+                                                            <% end %>
+                                                        <% else %>
+                                                            <%= ff.input :images, as: :file , label: false, wrapper: :horizontal_form, required: true %>
+                                                        <% end %>
+                                                    </td>
+                                                </tr>
+                                            <% end %>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-4">
+                        <%= f.submit "Salvar", :class => 'btn btn-primary' %>
+                        <%= link_to 'Voltar', participantes_path, :class => 'btn btn-white' %>
+                    </div>
+                </div>
+                <br/>
+            </div>
+        </div>
+    </div>
+<% end %>
+
+<% content_for :javascript do %>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            var select2lotacao = function(lotacaoField){
+                lotacaoField.select2({
+                    minimumInputLength: 3,
+                    allowClear: true,
+                    ajax: {
+                        url: '<%= buscar_lotacao_lotacoes_path %>',
+                        dataType: 'json',
+                        delay: 300,
+                        cache: true,
+                        data: function (term) {
+                            return {
+                                descricao: term
+                            };
+                        },
+                        results: function (data) {
+                            var results = [];
+                            $.each(data, function(index, item){
+                                results.push({
+                                    id: item.id,
+                                    text: item.descricao
+                                });
+                            });
+                            return {
+                                results: results
+                            };
+                        }
+                    },
+                    initSelection : function (element, callback) {
+                    var elementText = $(element).data('initvalue');
+                        if(elementText && elementText['id'] !== null) {
+                            callback(elementText);
+                        }
+                    }
+                }).attr('style','display:block; position:absolute; bottom: 0; left: 0; clip:rect(0,0,0,0);');
+            };
+
+            select2lotacao($('.buscar-lotacao'));
+
+            var select2estado = function(estadoField){
+                estadoField.select2({
+                    minimumInputLength: 3,
+                    allowClear: true,
+                    ajax: {
+                        url: '<%= buscar_estado_estados_path %>',
+                        dataType: 'json',
+                        delay: 300,
+                        cache: true,
+                        data: function (term) {
+                            return {
+                                descricao: term
+                            };
+                        },
+                        results: function (data) {
+                            var results = [];
+                            $.each(data, function(index, item){
+                                results.push({
+                                    id: item.id,
+                                    text: item.descricao
+                                });
+                            });
+                            return {
+                                results: results
+                            };
+                        }
+                    },
+                    initSelection : function (element, callback) {
+                    var elementText = $(element).data('initvalue');
+                        if(elementText && elementText['id'] !== null) {
+                            callback(elementText);
+                        }
+                    }
+                }).attr('style','display:block; position:absolute; bottom: 0; left: 0; clip:rect(0,0,0,0);');
+            };
+
+            select2estado($('.buscar-estado'));
+        });
+    </script>
+<% end %>

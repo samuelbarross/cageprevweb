@@ -1,0 +1,55 @@
+<%- model_class = Dependente -%>
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+        <meta charset="utf-8" />
+        <style TYPE="text/css">
+        td {
+            font-family: Arial; font-size: 8pt;
+        }
+        .titulo {
+            font-family: Arial; 
+            font-size: 12pt; 
+            font-weight: bold;
+            text-align: center;
+        }     
+        th {
+            background-color: #4CAF50;
+            color: white;
+        }
+        table, tr, td, th, tbody, thead, tfoot {
+            page-break-inside: avoid !important;
+        }
+    </style>
+    <script>
+        function number_pages() {
+            var vars={};
+            var x=document.location.search.substring(1).split('&');
+            for(var i in x) {var z=x[i].split('=',2);vars[z[0]] = decodeURIComponent(z[1]);}
+                var x=['frompage','topage','page','webpage','section','subsection','subsubsection'];
+            for(var i in x) {
+                var y = document.getElementsByClassName(x[i]);
+                for(var j=0; j<y.length; ++j) y[j].textContent = vars[x[i]];
+            }
+        }
+    </script>
+    </head>
+    <body onload="number_pages()">
+        <table width="100%" class="table table-condensed table-striped" >
+            <thead>
+                <tr>  
+	                <th><%= model_class.human_attribute_name(:id) %></th>
+	                <th><%= model_class.human_attribute_name(:codigo) %></th>
+	                <th><%= model_class.human_attribute_name(:descricao) %></th>
+                </tr>
+            </thead>
+            <tbody>
+	            <%= content_tag_for(:tr, @lotacoes) do |lotacao| %>
+	                <td><%= lotacao.id %></td>
+	                <td><%= lotacao.descricao %></td>
+	                <td><%= lotacao.codigo %></td>
+	            <% end %>
+            </tbody>
+        </table>
+    </body>
+</html>

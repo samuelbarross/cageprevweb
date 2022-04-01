@@ -1,0 +1,61 @@
+<%- model_class = Estado -%>
+<h1>Dados do Estado</h1>
+<div class="row">
+    <div class="col-lg-12">
+        <div class="ibox float-e-margins">
+            <div class="ibox-content">
+                <p id="notice"><%= notice %></p>
+                <form class="form-horizontal">
+                    <div class="form-group">
+                        <div class="col-md-2 control-label">
+                            <%= model_class.human_attribute_name(:descricao) %>:
+                        </div>
+                        <div class="col-md-10">
+                            <label class="form-control">
+                                <%= @estado.descricao %>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="hr-line-dashed"></div>
+
+                    <div class="form-group">
+                        <div class="col-md-2 control-label">
+                            <%= model_class.human_attribute_name(:codigo) %>:
+                        </div>
+                        <div class="col-md-10">
+                            <label class="form-control">
+                                <%= @estado.codigo %>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="hr-line-dashed"></div>
+
+                    <div class="form-group">
+                        <div class="col-md-2 control-label">
+                            <%= model_class.human_attribute_name(:UF) %>:
+                        </div>
+                        <div class="col-md-10">
+                            <label class="form-control">
+                                <%= @estado.uf %>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="hr-line-dashed"></div>
+
+                    <div class="form-group">
+                        <div class="col-sm-4">
+                            <%= link_to edit_estado_path(@estado), class: 'btn btn-primary' do %>
+                            Editar
+                            <% end %>
+                            <%= link_to 'Voltar', estados_path, :class => 'btn btn-white' %>
+                            <%= link_to 'Novo', new_estado_path, :class => 'btn btn-warning' %>
+
+                        </div>
+                    </div>
+
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>

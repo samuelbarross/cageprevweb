@@ -1,0 +1,73 @@
+<%- model_class = Dependente -%>
+<%= simple_form_for(@dependente, html: { class: "form-horizontal", role: "form", name: "form"  }) do |f| %>
+    <%= f.error_notification %>
+    <div class="row">
+        <div class="ibox-content">
+            <%= f.input :codigo, as: :string,  wrapper: :horizontal_form %>
+            <div class="hr-line-dashed"></div>
+            <%= f.input :participante_id, as: :string, wrapper: :horizontal_form, input_html: { class: "buscar-participante", data: {initvalue: {"id": f.object.participante_id, "text": (f.object.participante.nome if f.object.participante)}}} %>
+            <div class="hr-line-dashed"></div>
+            <%= f.input :nome, as: :string,  wrapper: :horizontal_form %>
+            <div class="hr-line-dashed"></div>
+            <%= f.input :sexo, collection: Dependente.sexos.keys, wrapper: :horizontal_form, include_blank: "Por favor, selecione" %>
+            <div class="hr-line-dashed"></div>
+            <%= f.input :data_nascimento, as: :string, wrapper: :horizontal_form, input_html: { class: "datepicker", value: f.object.data_nascimento.try(:strftime, '%d/%m/%Y') }%>
+            <div class="hr-line-dashed"></div>
+            <%= f.input :parentesco, collection: Dependente.parentescos.keys, wrapper: :horizontal_form, include_blank: "Por favor, selecione" %>
+            <div class="hr-line-dashed"></div>
+            <%= f.input :invalido, as: :select, wrapper: :horizontal_form, include_blank: "Por favor, selecione", required: true %>
+
+            <div class="form-group">
+                <div class="col-sm-4">
+                    <%= f.submit "Salvar", :class => 'btn btn-primary' %>
+                    <%= link_to 'Voltar', dependentes_path, :class => 'btn btn-white' %>
+                </div>
+            </div>
+            <br />
+        </div>
+    </div>
+<% end %>
+
+<% content_for :javascript do %>
+    <script type="text/javascript">
+        $(document).ready(function(){
+
+            var select2participante = function(participanteField){
+                participanteField.select2({
+                    minimumInputLength: 3,
+                    allowClear: true,
+                    ajax: {
+                        url: '<%= buscar_participante_participantes_path %>',
+                        dataType: 'json',
+                        delay: 300,
+                        cache: true,
+                        data: function (term) {
+                            return {
+                                nome: term
+                            };
+                        },
+                        results: function (data) {
+                            var results = [];
+                            $.each(data, function(index, item){
+                                results.push({
+                                    id: item.id,
+                                    text: item.nome
+                                });
+                            });
+                            return {
+                                results: results
+                            };
+                        }
+                    },
+                    initSelection : function (element, callback) {
+                    var elementText = $(element).data('initvalue');
+                        if(elementText && elementText['id'] !== null) {
+                            callback(elementText);
+                        }
+                    }
+                }).attr('style','display:block; position:absolute; bottom: 0; left: 0; clip:rect(0,0,0,0);');
+            };
+            select2participante($('.buscar-participante'));           
+        });
+    </script>
+<% end %>    

@@ -1,0 +1,65 @@
+<%- model_class = Dependente -%>
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+        <meta charset="utf-8" />
+        <style TYPE="text/css">
+        td {
+            font-family: Arial; font-size: 8pt;
+        }
+        .titulo {
+            font-family: Arial; 
+            font-size: 12pt; 
+            font-weight: bold;
+            text-align: center;
+        }     
+        th {
+            background-color: #4CAF50;
+            color: white;
+        }
+        table, tr, td, th, tbody, thead, tfoot {
+            page-break-inside: avoid !important;
+        }
+    </style>
+    <script>
+        function number_pages() {
+            var vars={};
+            var x=document.location.search.substring(1).split('&');
+            for(var i in x) {var z=x[i].split('=',2);vars[z[0]] = decodeURIComponent(z[1]);}
+                var x=['frompage','topage','page','webpage','section','subsection','subsubsection'];
+            for(var i in x) {
+                var y = document.getElementsByClassName(x[i]);
+                for(var j=0; j<y.length; ++j) y[j].textContent = vars[x[i]];
+            }
+        }
+    </script>
+    </head>
+    <body onload="number_pages()">
+        <table width="100%" class="table table-condensed table-striped" >
+            <thead>
+                <tr>  
+	                <th><%= model_class.human_attribute_name(:id) %></th>
+                    <th><%= model_class.human_attribute_name(:participante_id) %></th>
+                    <th><%= model_class.human_attribute_name(:codigo) %></th>
+                    <th><%= model_class.human_attribute_name(:nome) %></th>
+                    <th><%= model_class.human_attribute_name(:sexo) %></th>
+                    <th><%= model_class.human_attribute_name(:data_nascimento) %></th>
+                    <th><%= model_class.human_attribute_name(:parentesco) %></th>
+                    <th><%= model_class.human_attribute_name(:invalido) %></th>
+                </tr>
+            </thead>
+            <tbody>
+	            <%= content_tag_for(:tr, @dependentes) do |dependente| %>
+                    <td><%= dependente.id %></td>
+                    <td><%= dependente.participante.nome %></td>
+                    <td><%= dependente.codigo %></td>
+                    <td><%= dependente.nome %></td>
+                    <td><%= dependente.sexo_i18n %></td>
+                    <td><%= dependente.data_nascimento %></td>
+                    <td><%= dependente.parentesco_i18n %></td>
+                    <td><%= dependente.invalido %></td>
+	            <% end %>
+            </tbody>
+        </table>
+    </body>
+</html>

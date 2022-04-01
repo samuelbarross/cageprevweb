@@ -1,0 +1,7 @@
+<div class="row">
+    <div class="col-sm-6"><%= ff.input :nome, as: :string,  wrapper: :horizontal_form %></div>
+    <div class="col-sm-6"><%= ff.input :sexo, collection: Dependente.sexos.keys, wrapper: :horizontal_form, include_blank: "Por favor, selecione" %></div>
+    <div class="col-sm-6"><%= ff.input :data_nascimento, as: :string, wrapper: :horizontal_form, input_html: { class: "datepicker", value: ff.object.data_nascimento.try(:strftime, '%d/%m/%Y') }%></div>
+    <div class="col-sm-6"><%= ff.input :parentesco, collection: Dependente.parentescos.keys, wrapper: :horizontal_form, include_blank: "Por favor, selecione" %></div>
+    <div class="col-sm-6"><%= ff.input :invalido, as: :select, wrapper: :horizontal_form, include_blank: "Por favor, selecione", required: true %></div>
+</div>

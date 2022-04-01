@@ -1,0 +1,50 @@
+<% if user_signed_in? %>
+    <div class="row border-bottom white-bg">
+        <nav class="navbar navbar-static-top" role="navigation">
+            <div class="navbar-header">
+                <button aria-controls="navbar" aria-expanded="false" data-target="#navbar" data-toggle="collapse" class="navbar-toggle collapsed" type="button">
+                    <i class="fa fa-reorder"></i>
+                </button>
+                <a href="#" class="navbar-brand">CagePrev-Web</a>
+            </div>
+            <div class="navbar-collapse collapse" id="navbar">
+                <ul class="nav navbar-nav">
+                    <li class="active">
+                        <a aria-expanded="false" role="button" href="<%= url_for :controller => 'devise/registrations', :action => 'edit' %>">CPF: <%= current_user.cpf.gsub(/(\d{3})(\d{3})(\d{3})(\d{2})/, "\\1.\\2.\\3-\\4") %></a>
+                    </li>
+                    <li>
+                        <a aria-expanded="false" role="button" href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-th-large"></i> Cadastros <span class="caret"></span></a>
+                        <ul role="menu" class="dropdown-menu">
+                            <% participante = Participante.find_by_cpf(current_user.cpf) %>
+                            <li>
+                                <% unless participante.nil? %>
+                                    <a href="<%= participante_path(participante) %>"><i class="fa fa-users"></i> Participantes </a>
+                                <% else %>
+                                    <a href="<%= participantes_path %>"><i class="fa fa-users"></i> Participantes </a>
+                                <% end %>
+                            </li>
+                            <% if current_user.admin? %>
+                                <li><a href="<%= dependentes_path %>"><i class="fa fa-users"></i> Dependentes </a></li>
+                                <li><a href="<%= lotacoes_path %>"><i class="fa fa-briefcase"></i> Lotação</a></li>
+                                <li><a href="<%= estados_path %>"><i class="fa fa-map-marker"></i> Estados</a></li>
+                                <li><a href="<%= empresas_path %>"><i class="fa fa-university"></i>Empresas</a></li>
+                                <li><a href="<%= users_path %>"><i class="fa fa-users"></i> Usuários </a></li>
+                            <% end %>
+                        </ul>
+                    </li>
+                    <li>
+                        <a aria-expanded="false" role="button" href="#" class="dropdown-toggle" data-toggle="dropdown"> Configurações <span class="caret"></span></a>
+                        <ul role="menu" class="dropdown-menu">
+                            <li><a href="<%= edit_user_registration_path %>"><i class="fa fa-user"></i> Atualizar Senha </a></li>
+                            <!-- <li><a href="<%#= editar_perfil_users_path(id: current_user.id) %>"><i class="fa fa-file-text"></i> Editar Perfil </a></li>
+                            <li><a href="<%#= edit_setting_path(Setting.maximum(:id)) %>"><i class="fa fa-file-text"></i> Configurações Básicas </a></li> -->
+                        </ul>
+                    </li>
+                </ul>
+                <ul class="nav navbar-top-links navbar-right">
+                    <li><%= link_to 'Log out', destroy_user_session_path, method: :delete, class: "fa fa-sign-out" %></li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+<% end %>

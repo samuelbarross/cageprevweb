@@ -1,0 +1,28 @@
+  <div class="middle-box text-center loginscreen">
+  <div>
+    <div class="logo-name" style="text-align: center;">CAGEPREV</div>
+    <h3>WEB</h3>
+    <p>Criar nova conta.</p>
+    <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :role => 'form', class:"m-t"}) do |f| %>
+        <%= devise_error_messages! %>
+        <div class="form-group">
+          <!--<input type="email" class="form-control" placeholder="Email" required="">-->
+          <%= f.text_field :cpf, class: 'form-control', placeholder: 'Informe o CPF', required:true %>
+        </div>
+        <div class="form-group">
+          <!--<input type="password" class="form-control" placeholder="Password" required="">-->
+          <%= f.password_field :password, class: 'form-control', placeholder:t('mensagens.password'), required:true %>
+        </div>
+        <div class="form-group">
+          <%= f.password_field :password_confirmation, class: 'form-control', placeholder:t('mensagens.confirm_password'), required:true %>
+        </div>
+
+        <%= f.submit t('mensagens.sign_up'), :class => 'btn btn-primary block full-width m-b' %>
+
+        <p class="text-muted text-center"><small><%= t('mensagens.already_have_an_account') %>?</small></p>
+
+
+    <% end %>
+    <p class="m-t"> <small>South Wind Systems Ltda &copy; 2016</small> </p>
+  </div>
+</div>

@@ -1,0 +1,59 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  estado_id: 
+  lotacao_id: 
+  matricula: MyString
+  nome: MyString
+  nome_pai: MyString
+  nome_mae: MyString
+  nome_conjugue: MyString
+  sexo: 1
+  naturalidade: MyString
+  nacionalidade: MyString
+  estado_civil: 1
+  data_nascimento: 2018-04-03
+  cpf: MyString
+  rg: MyString
+  orgao_expedidor: MyString
+  data_expedicao: 2018-04-03
+  logradouro: MyString
+  numero: MyString
+  complemento: MyString
+  bairro: MyString
+  cidade: MyString
+  cep: MyString
+  data_posse: 2018-04-03
+  cargo: MyString
+  telefone_residencial: MyString
+  telefone_celular: MyString
+  email: MyString
+
+two:
+  estado_id: 
+  lotacao_id: 
+  matricula: MyString
+  nome: MyString
+  nome_pai: MyString
+  nome_mae: MyString
+  nome_conjugue: MyString
+  sexo: 1
+  naturalidade: MyString
+  nacionalidade: MyString
+  estado_civil: 1
+  data_nascimento: 2018-04-03
+  cpf: MyString
+  rg: MyString
+  orgao_expedidor: MyString
+  data_expedicao: 2018-04-03
+  logradouro: MyString
+  numero: MyString
+  complemento: MyString
+  bairro: MyString
+  cidade: MyString
+  cep: MyString
+  data_posse: 2018-04-03
+  cargo: MyString
+  telefone_residencial: MyString
+  telefone_celular: MyString
+  email: MyString

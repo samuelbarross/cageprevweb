@@ -1,0 +1,17 @@
+pt-BR:
+  enums:
+    participante:
+        estado_civil:
+            viuvo: "Viúvo(a)"
+    dependente:
+        parentesco:
+          participante: "PARTICIPANTE"
+          ex_conjugue_percepcao_alimentos: "EX-CÔNJUGE COM PERCEPÇÃO DE ALIMENTOS"
+          companheiro: "COMPANHEIRO(A)"
+          filho: "FILHO(A)"
+          filho_invalido: "FILHO(A) INVÁLIDO(A)"
+          pais: "PAIS"
+          irmao: "IRMÃ(O)"
+          irmao_invalido: "IRMÃ(O) INVÁLIDA(O)"
+          conjugue: "CÔNJUGE"
+          menor_sob_guarda: "MENOR SOB GUARDA"

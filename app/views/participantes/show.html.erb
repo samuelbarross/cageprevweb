@@ -1,0 +1,404 @@
+<%- model_class = Participante -%>
+<%- model_class_dependente = Dependente -%>
+
+<h1>Dados Participante</h1>
+<div class="row">
+    <div class="col-sm-4">
+        <%= link_to edit_participante_path(@participante), class: 'btn btn-primary' do %>
+        Editar
+        <% end %>
+    </div>
+</div>
+<div class="wrapper wrapper-content animated fadeInRight ecommerce">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="tabs-container">
+                <ul class="nav nav-tabs">
+                    <li class="active"><a data-toggle="tab" href="#tab-1">Participante</a></li>
+                    <li><a data-toggle="tab" href="#tab-2">Dependentes</a></li>
+                    <li><a data-toggle="tab" href="#tab-3">Imagens</a></li>
+                </ul>
+                <div class="tab-content">
+                    <!-- Participante -->
+                    <div id="tab-1" class="tab-pane active">
+                        <div class="panel-body">
+
+                            <fieldset class="form-horizontal">
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <div class="col-md-3 control-label">
+                                            <%= model_class.human_attribute_name(:matricula) %>:
+                                        </div>
+                                        <div class="col-md-9">
+                                            <label class="form-control">
+                                                <%= @participante.matricula %>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <div class="col-md-3 control-label">
+                                            <%= model_class.human_attribute_name(:nome) %>:
+                                        </div>
+                                        <div class="col-md-9">
+                                            <label class="form-control">
+                                                <%= @participante.nome %>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <div class="col-md-3 control-label">
+                                            <%= model_class.human_attribute_name(:nome_pai) %>:
+                                        </div>
+                                        <div class="col-md-9">
+                                            <label class="form-control">
+                                                <%= @participante.nome_pai %>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <div class="col-md-3 control-label">
+                                            <%= model_class.human_attribute_name(:nome_mae) %>:
+                                        </div>
+                                        <div class="col-md-9">
+                                            <label class="form-control">
+                                                <%= @participante.nome_mae %>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <div class="col-md-3 control-label">
+                                            <%= model_class.human_attribute_name(:nome_conjugue) %>:
+                                        </div>
+                                        <div class="col-md-9">
+                                            <label class="form-control">
+                                                <%= @participante.nome_conjugue %>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <div class="col-md-3 control-label">
+                                            <%= model_class.human_attribute_name(:sexo) %>:
+                                        </div>
+                                        <div class="col-md-9">
+                                            <label class="form-control">
+                                                <%= @participante.sexo_i18n if @participante.sexo %>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <div class="col-md-3 control-label">
+                                            <%= model_class.human_attribute_name(:naturalidade) %>:
+                                        </div>
+                                        <div class="col-md-9">
+                                            <label class="form-control">
+                                                <%= @participante.naturalidade %>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <div class="col-md-3 control-label">
+                                            <%= model_class.human_attribute_name(:nacionalidade) %>:
+                                        </div>
+                                        <div class="col-md-9">
+                                            <label class="form-control">
+                                                <%= @participante.nacionalidade %>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <div class="col-md-3 control-label">
+                                            <%= model_class.human_attribute_name(:estado_civil) %>:
+                                        </div>
+                                        <div class="col-md-9">
+                                            <label class="form-control">
+                                                <%= @participante.estado_civil_i18n if @participante.estado_civil %>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <div class="col-md-3 control-label">
+                                            <%= model_class.human_attribute_name(:data_nascimento) %>:
+                                        </div>
+                                        <div class="col-md-9">
+                                            <label class="form-control">
+                                                <%= @participante.data_nascimento.present? ? l(@participante.data_nascimento, formart: :data_ddmmyy) : @participante.data_nascimento %>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <div class="col-md-3 control-label">
+                                            <%= model_class.human_attribute_name(:cpf) %>:
+                                        </div>
+                                        <div class="col-md-9">
+                                            <label class="form-control">
+                                                <%= @participante.cpf %>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <div class="col-md-3 control-label">
+                                            <%= model_class.human_attribute_name(:rg) %>:
+                                        </div>
+                                        <div class="col-md-9">
+                                            <label class="form-control">
+                                                <%= @participante.rg %>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <div class="col-md-3 control-label">
+                                            <%= model_class.human_attribute_name(:orgao_expedidor) %>:
+                                        </div>
+                                        <div class="col-md-9">
+                                            <label class="form-control">
+                                                <%= @participante.data_expedicao.present? ? l(@participante.data_expedicao, formart: :data_ddmmyy) : @participante.data_expedicao %>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <div class="col-md-3 control-label">
+                                            <%= model_class.human_attribute_name(:logradouro) %>:
+                                        </div>
+                                        <div class="col-md-9">
+                                            <label class="form-control">
+                                                <%= @participante.logradouro %>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <div class="col-md-3 control-label">
+                                            <%= model_class.human_attribute_name(:numero) %>:
+                                        </div>
+                                        <div class="col-md-9">
+                                            <label class="form-control">
+                                                <%= @participante.numero %>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <div class="col-md-3 control-label">
+                                            <%= model_class.human_attribute_name(:complemento) %>:
+                                        </div>
+                                        <div class="col-md-9">
+                                            <label class="form-control">
+                                                <%= @participante.complemento %>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <div class="col-md-3 control-label">
+                                            <%= model_class.human_attribute_name(:bairro) %>:
+                                        </div>
+                                        <div class="col-md-9">
+                                            <label class="form-control">
+                                                <%= @participante.bairro %>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <div class="col-md-3 control-label">
+                                             <%= model_class.human_attribute_name(:cidade) %>:
+                                        </div>
+                                        <div class="col-md-9">
+                                            <label class="form-control">
+                                                <%= @participante.cidade %>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <div class="col-md-3 control-label">
+                                            <%= model_class.human_attribute_name(:cep) %>:
+                                        </div>
+                                        <div class="col-md-9">
+                                            <label class="form-control">
+                                                <%= @participante.cep %>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <div class="col-md-3 control-label">
+                                            <%= model_class.human_attribute_name(:lotacao) %>:
+                                        </div>
+                                        <div class="col-md-9">
+                                            <label class="form-control">
+                                                <%= @participante.lotacao.descricao if @participante.lotacao %>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <div class="col-md-3 control-label">
+                                            <%= model_class.human_attribute_name(:estado) %>:
+                                        </div>
+                                        <div class="col-md-9">
+                                            <label class="form-control">
+                                                <%= @participante.estado.descricao if @participante.estado %>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <div class="col-md-3 control-label">
+                                            <%= model_class.human_attribute_name(:data_posse) %>:
+                                        </div>
+                                        <div class="col-md-9">
+                                            <label class="form-control">
+                                                <%= @participante.data_posse.present? ? l(@participante.data_posse, formart: :data_ddmmyy) : @participante.data_posse %>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <div class="col-md-3 control-label">
+                                            <%= model_class.human_attribute_name(:cargo) %>:
+                                        </div>
+                                        <div class="col-md-9">
+                                            <label class="form-control">
+                                                <%= @participante.cargo %>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <div class="col-md-3 control-label">
+                                            <%= model_class.human_attribute_name(:telefone_residencial) %>:
+                                        </div>
+                                        <div class="col-md-9">
+                                            <label class="form-control">
+                                                <%= @participante.telefone_residencial %>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <div class="col-md-3 control-label">
+                                            <%= model_class.human_attribute_name(:telefone_celular) %>:
+                                        </div>
+                                        <div class="col-md-9">
+                                            <label class="form-control">
+                                                <%= @participante.telefone_celular %>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <div class="col-md-3 control-label">
+                                            <%= model_class.human_attribute_name(:email) %>:
+                                        </div>
+                                        <div class="col-md-9">
+                                            <label class="form-control">
+                                                <%= @participante.email %>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </fieldset>
+                        </div>
+                    </div>
+                    <!-- Dependentes -->
+                    <div id="tab-2" class="tab-pane">
+                        <div class="panel-body">
+                            <table class="table table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th><%= model_class_dependente.human_attribute_name(:id) %></th>
+                                        <th><%= model_class_dependente.human_attribute_name(:codigo) %></th>
+                                        <th><%= model_class_dependente.human_attribute_name(:nome) %></th>
+                                        <th><%= model_class_dependente.human_attribute_name(:sexo) %></th>
+                                        <th><%= model_class_dependente.human_attribute_name(:data_nascimento) %></th>
+                                        <th><%= model_class_dependente.human_attribute_name(:parentesco) %></th>
+                                        <th><%= model_class_dependente.human_attribute_name(:invalido) %></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <% @dependentes.each do |ff| %>
+                                        <tr class="fields">
+                                            <td><%= ff.id %></td>
+                                            <td><%= ff.codigo %></td>
+                                            <td><%= ff.nome %></td>
+                                            <td><%= ff.sexo_i18n if ff.sexo %></td>
+                                            <td><%= l(ff.data_nascimento, format: :data_ddmmyy) if ff.data_nascimento %></td>
+                                            <td><%= ff.parentesco_i18n if ff.sexo %></td>
+                                            <td><%= t ff.invalido.to_s unless ff.invalido.nil? %></td>
+                                        </tr>
+                                    <% end %>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <!-- Imagens -->
+                    <div id="tab-3" class="tab-pane">
+                        <div class="panel-body">
+                            <div class="lightBoxGallery" style="text-align: left">
+                                <% @imagens.each do |ff| %>
+                                    <% if ff.images_content_type == "application/pdf" %>
+                                        <div class="file-box">
+                                            <div class="file">
+                                                <a href="#">
+                                                    <span class="corner"></span>
+
+                                                    <div class="icon">
+                                                        <i class="fa fa-file"></i>
+                                                    </div>
+                                                    <div class="file-name">
+                                                        <%= link_to ff.images_file_name, ff.images.url, class: "fa fa-download", target: '_blank'  %>
+                                                    </div>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    <% else %>
+                                        <a href="<%= image_path(ff.images.url) %>" title="Imagem" data-gallery="" download="<%= ff.images_file_name %>"><%= image_tag(ff.images.url(:thumb), size: "160x160") %></a>
+                                    <% end %>
+                                <% end %>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

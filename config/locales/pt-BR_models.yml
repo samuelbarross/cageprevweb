@@ -1,0 +1,43 @@
+"pt-BR":
+  activerecord:
+    models:
+      estado: "Estado"
+      user: "Usuário"
+      empresa: "Empresa"
+      lotacao: "Lotação"
+      participante: "Participante"
+      dependente: "Dependente"
+    attributes:
+      estado:
+        codigo: "Código"
+        descricao: "Descrição"
+      empresa:
+        cpf_cnpj: "CNPJ / CPF"
+        pessoa_fisica: "Pessoa Física?"
+        caminho_certificado: "Caminho Certificado"
+        senha_certificado: "Senha Certificado"
+      lotacao:
+        codigo: "Código"
+        descricao: "Descrição"
+      participante:
+        matricula: "Matrícula"
+        nome_pai: "Pai"
+        nome_mae: "Mãe"
+        nome_conjugue: "Cônjuge"
+        estado_civil: "Estado Civil"
+        data_nascimento: "Data Nascimento"
+        orgao_expedidor: "Orgão Expeditor"
+        data_expedicao: "Data Expedição"
+        numero: "Número"
+        data_posse: "Admissão"
+        telefone_residencial: "Tel. Residencial"
+        telefone_celular: "Tel. Celular"
+        lotacao_id: "Lotação"
+      dependente:
+        participante_id: "Participante"
+        codigo: "Código"
+        data_nascimento: "Data Nascimento"
+        invalido: "Inválido"
+        nome: "Dependente"
+      imagem:
+        image: "Arquivo"
